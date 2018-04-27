@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:orientation="horizontal"
+            >
+           <TextView
+               android:layout_width="160dp"
+               android:layout_height="50dp"
+               android:layout_weight="4"
+               android:textColor="#392ea3"
+               android:id="@+id/textView01"/>
+
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="20dp"
+                android:layout_height="35dp"
+                android:layout_gravity="top"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="#b40808"
+                android:text="X"
+                android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginBottom="5dp">
+
+       <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+           android:textColor="#b33b5b"
+          android:id="@+id/textView02"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textColor="#b350a2"
+            android:id="@+id/textView03"/>
+
+        </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>
