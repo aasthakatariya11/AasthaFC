@@ -74,7 +74,7 @@ public class PreviousOrderListFragment extends Fragment {
         protected String doInBackground(String... strings) {
             try {
                 //   Authenticator.setDefault(new passwordAuthenticator());
-                URL url=new URL("http://35.154.164.138/api/orders/");
+                URL url=new URL(" ");
                 HttpURLConnection con= (HttpURLConnection) url.openConnection();
 
                 con.setRequestMethod( "GET" );
@@ -110,7 +110,7 @@ public class PreviousOrderListFragment extends Fragment {
             try {
                 JSONObject jsonObj = new JSONObject(jsonstring);
                 JSONArray results = jsonObj.getJSONArray("results");
-                Log.v("aasthapaastha",results.toString());
+
 
 
                 for(int i=0;i<results.length();i++)
@@ -118,7 +118,6 @@ public class PreviousOrderListFragment extends Fragment {
                     JSONObject jsonobj1 = results.getJSONObject(i);
                     int id=jsonobj1.getInt("id");
 
-                    Log.v("aasuzi",String.valueOf(id));
                     int covers=jsonobj1.getInt("covers");
                     String date_added=jsonobj1.getString("date_added");
 
@@ -128,9 +127,10 @@ public class PreviousOrderListFragment extends Fragment {
 
                     String items_json=jsonobj1.getString("items_json");
 
+                    String comment=jsonobj1.getString("comment");
 
 
-                        previousorderlistal.add(new PreviousOrder(id,table,covers,date_added,total,items_json));
+                        previousorderlistal.add(new PreviousOrder(id,table,covers,date_added,total,items_json,comment));
                           Log.v("prevorder", date_added);
                     }
                 } catch (JSONException e1) {
@@ -138,7 +138,6 @@ public class PreviousOrderListFragment extends Fragment {
             }
 
 
-            Log.v("aastha",previousorderlistal.toString());
             PreviousOrderAdapter01 previous_adapter=new PreviousOrderAdapter01(getActivity(),previousorderlistal);
             lvprevious= getActivity().findViewById(R.id.Prev_order_list);
 
@@ -152,8 +151,8 @@ public class PreviousOrderListFragment extends Fragment {
 
     }
 
-    public class PreviousOrderAdapter01 extends ArrayAdapter implements View.OnClickListener{
-        PreviousOrder order;
+    public class PreviousOrderAdapter01 extends ArrayAdapter {
+
 
         public PreviousOrderAdapter01(@NonNull Activity context, ArrayList<PreviousOrder> Prev_order_list ) {
             super(context, 0, Prev_order_list);
@@ -169,7 +168,8 @@ public class PreviousOrderListFragment extends Fragment {
             {
                 listView= LayoutInflater.from(getContext()).inflate(R.layout.previous_list_item,parent,false);
             }
-            order= (PreviousOrder) getItem(position);
+
+            final PreviousOrder order= (PreviousOrder) getItem(position);
 
             Button b1=listView.findViewById(R.id.covers);
             b1.setText("Covers:"+order.getCovers());
@@ -184,20 +184,43 @@ public class PreviousOrderListFragment extends Fragment {
             TextView tv=listView.findViewById(R.id.Prev_order_id);
             tv.setText("Order ID:" + order.getId());
 
-            b1.setOnClickListener(this);
-            b2.setOnClickListener(this);
-            b3.setOnClickListener(this);
-            tv.setOnClickListener(this);
+            b1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PreviousCommunicator comm= (PreviousCommunicator) getActivity();
+                    comm.PreviousResponse(order);
+                }
+            });
+            b2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PreviousCommunicator comm= (PreviousCommunicator) getActivity();
+                    comm.PreviousResponse(order);
+
+                }
+            });
+
+            b3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PreviousCommunicator comm= (PreviousCommunicator) getActivity();
+                    comm.PreviousResponse(order);
+
+                }
+            });
+            tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    PreviousCommunicator comm= (PreviousCommunicator) getActivity();
+                    comm.PreviousResponse(order);
+
+                }
+            });
             return listView;
 
         }
 
-        @Override
-        public void onClick(View view) {
-            PreviousCommunicator prevcomm= (PreviousCommunicator) getActivity();
-            prevcomm.PreviousResponse(order);
 
-        }
     }
 
 

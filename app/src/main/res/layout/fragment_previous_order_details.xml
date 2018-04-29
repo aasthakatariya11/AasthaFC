@@ -26,8 +26,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kitchen Orders:-"
+            android:id="@+id/Kitchen_text_view"
             />
-
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/prev_order_details"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bar Orders:-"
+        android:id="@+id/Bar_text_view"
+        />
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/prev_order_bar_details"/>
 
 
 

@@ -12,8 +12,9 @@ public class PreviousOrder {
     int covers;
     Double total;
     String items_json;
+    String comment;
 
-    public PreviousOrder(int id,int table,int covers,String date_added,Double total,String items_json)
+    public PreviousOrder(int id,int table,int covers,String date_added,Double total,String items_json,String comment)
     {
         this.id=id;
         this.table=table;
@@ -21,6 +22,7 @@ public class PreviousOrder {
         this.date_added=date_added;
         this.total=total;
         this.items_json=items_json;
+        this.comment=comment;
     }
 
     public int getId() {
@@ -69,5 +71,13 @@ public class PreviousOrder {
 
     public void setTotal(Double total) {
         this.total = total;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 }

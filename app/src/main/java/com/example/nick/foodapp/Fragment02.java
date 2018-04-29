@@ -68,7 +68,7 @@ public class Fragment02 extends Fragment {
         protected String doInBackground(String... strings) {
             try {
              //   Authenticator.setDefault(new passwordAuthenticator());
-                URL url=new URL("http://35.154.164.138/api/categories/");
+                URL url=new URL(" ");
                 HttpURLConnection con= (HttpURLConnection) url.openConnection();
 
                 con.setRequestMethod( "GET" );
